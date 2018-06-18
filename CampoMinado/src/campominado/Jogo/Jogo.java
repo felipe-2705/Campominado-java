@@ -26,17 +26,25 @@ public class Jogo {
             
             public boolean Marcar(int i,int j)
             {  
-                
+                if(this.tabuleiro.m.marcar(i, j))
+                {
+                    this.marcadas++;
+                    return true;
+                } 
               
-                this.marcadas++;
-                return  this.tabuleiro.m.marcar(i, j);
+             return false;
+                
             }
             
             public boolean desmarcar(int i,int j)
             {
-               
+               if(this.tabuleiro.m.Desmarca(i, j))
+               {
                this.marcadas--;
-               return this.tabuleiro.m.Desmarca(i, j);
+               return true;
+               }
+               return false;
+               
             }
             
             public boolean abrir (int i,int j)
@@ -46,8 +54,12 @@ public class Jogo {
                 {
                     this.derrota=true;
                 }
-                this.abertas++;
-                 return this.tabuleiro.m.abrirPosicao(i, j);
+              if(this.tabuleiro.m.abrirPosicao(i, j))
+              {
+                  this.abertas++;
+                  return true;
+              }
+                  return false;
             }
             
              public String imprime()
@@ -99,7 +111,7 @@ public class Jogo {
                 int bomba =this.tabuleiro.Nbombas;
                 int size=this.tabuleiro.tamanho;
                 
-            /*  if(this.marcadas!=bomba)
+             if(this.marcadas!=bomba)
               {
                   return false;
               }
@@ -108,7 +120,7 @@ public class Jogo {
               {
                   return false;
               }
-              */
+              
               for(int i=0;i<bomba;i++)
               {
                   if(!this.tabuleiro.posicao_bombas[i].get_Flag())

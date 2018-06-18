@@ -102,6 +102,9 @@ public class Matriz_CampoMinado  implements InterfaceMatriz {
         if(this.Matriz[i][j].get_aberta())
             return false;
         
+        if(!this.Matriz[i][j].get_Flag())
+            return false;
+        
         this.Matriz[i][j].desmarcar();
         return true;
     }
